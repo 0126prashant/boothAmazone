@@ -21,19 +21,6 @@ app.use(express.json());
 
  app.use(express.static(path.join(__dirname, "../frontend/build")));
 
- app.get("/*",(req,res)=>{
-  res.sendFile(
-       path.join(__dirname,"../frontend/build/index.html"),
-      function(err){
-
-           if(err){
-              res.status(500).send(err)
-           }
-       }
-   )
-
- })
-
 const clientId = process.env.Google_Client_ID
 const clientSecret = process.env.Google_Client_secret;
 const redirectUri = process.env.REDIRECT_URI;
@@ -134,6 +121,19 @@ app.get('/inventory', (req, res) => {
       res.status(500).send('Error accessing inventory');
     });
 });
+
+ app.get("*",(req,res)=>{
+  res.sendFile(
+       path.join(__dirname,"../frontend/build/index.html"),
+      function(err){
+
+           if(err){
+              res.status(500).send(err)
+           }
+       }
+   )
+
+ })
 
 const PORT = 8080;
 app.listen(PORT,async()=>{
