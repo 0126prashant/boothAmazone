@@ -10,7 +10,7 @@ export const Login = () => {
     };
    
     const loginGoogle=()=>{
-window.open(`http://localhost:8080/auth/google/callback`,"_self")
+window.open(`/auth/google/callback`,"_self")
     }
   return (
     <div className="App">
