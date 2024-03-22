@@ -19,20 +19,20 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
+ app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-// app.get("/*",(req,res)=>{
-//   res.sendFile(
-//       path.join(__dirname,"../frontend/build/index.html"),
-//       function(err){
+ app.get("/*",(req,res)=>{
+  res.sendFile(
+       path.join(__dirname,"../frontend/build/index.html"),
+      function(err){
 
-//           if(err){
-//               res.status(500).send(err)
-//           }
-//       }
-//   )
+           if(err){
+              res.status(500).send(err)
+           }
+       }
+   )
 
-// })
+ })
 
 const clientId = process.env.Google_Client_ID
 const clientSecret = process.env.Google_Client_secret;
